@@ -1,7 +1,18 @@
-<p>
-  <mat-toolbar>
-    <span>Simple CRM</span>
-  </mat-toolbar>
-</p>
+<mat-drawer-container class="mat-drawer-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <p>Auto-resizing sidenav</p>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <p>
+      <mat-toolbar>
+        <button type="button" mat-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Simple CRM</span>
+      </mat-toolbar>
+    </p>
+  </div>
+</mat-drawer-container>
 
 <router-outlet />
