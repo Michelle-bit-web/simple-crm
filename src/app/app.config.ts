@@ -20,6 +20,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
-    provideFirestore(() => getFirestore()), provideFirebaseApp(() => initializeApp({ projectId: "simple-crm-9f911", appId: "1:218963384441:web:b134d76ab7b90cbf6cdca8", storageBucket: "simple-crm-9f911.firebasestorage.app", apiKey: "AIzaSyDn91OaIeYPSCCzFXUeYkDNiC0hzNrsvbA", authDomain: "simple-crm-9f911.firebaseapp.com", messagingSenderId: "218963384441" })), provideAuth(() => getAuth()), provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()), provideFirestore(() => getFirestore())
   ]
 };
