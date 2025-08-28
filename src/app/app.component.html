@@ -1,18 +1,29 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
+  <mat-drawer 
+  #drawer 
+  class="sidenav" 
+  mode="side" 
+  [opened]="true">
+   <div class="logo-container">
+    PLATZ LOGO
+   </div>
+   <ul>
+    <li><mat-icon>dashboard</mat-icon><a href="#">Dashboard</a></li>
+    <li><mat-icon>perm_identity</mat-icon><a href="#">Customers</a></li>
+    <li><mat-icon>settings</mat-icon><a href="#">Settings</a></li>
+   </ul>
   </mat-drawer>
 
-  <div class="example-sidenav-content">
+  <nav class="sidenav-content">
     <p>
       <mat-toolbar>
         <button type="button" mat-button (click)="drawer.toggle()">
-          <mat-icon>menu</mat-icon>
+          <mat-icon class="menu-icon">menu</mat-icon>
         </button>
         <span>Simple CRM</span>
       </mat-toolbar>
     </p>
-  </div>
+  </nav>
 </mat-drawer-container>
 
 <router-outlet />

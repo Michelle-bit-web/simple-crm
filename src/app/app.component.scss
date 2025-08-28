@@ -1,7 +1,44 @@
-.mat-drawer-container {
-    height: 100dvh;
+*{
+    box-sizing: border-box;
+    margin: 0;
+    text-decoration: none;
+    color: white;
+
+    button, a, li {
+        cursor: pointer;
+    }
 }
 
-button {
-    cursor: pointer;
+.mat-drawer-container {
+    height: 100dvh;
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        
+        li {
+            display: flex;
+            align-items: center;
+            padding: 8px 16px;
+            gap: 16px;
+
+            &:hover{
+                background-color:#00ffff65
+            }
+        }
+    }
+}
+
+.sidenav {
+    width: 300px;
+    background-color: #282f2f;
+    border-right: 1px solid #29dbdb;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(238, 238, 238, 0.12);
+    height: 56px;
+    padding: 16px;
 }
