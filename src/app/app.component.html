@@ -8,22 +8,23 @@
     PLATZ LOGO
    </div>
    <ul>
-    <li><mat-icon>dashboard</mat-icon><a href="#">Dashboard</a></li>
-    <li><mat-icon>perm_identity</mat-icon><a href="#">Customers</a></li>
-    <li><mat-icon>settings</mat-icon><a href="#">Settings</a></li>
+    <li routerLink="/dashboard"><mat-icon>dashboard</mat-icon>Dashboard</li>
+    <li routerLink="/user"><mat-icon>perm_identity</mat-icon>User</li>
+    <li routerLink="/help"><mat-icon>help</mat-icon>Help</li>
    </ul>
   </mat-drawer>
 
   <nav class="sidenav-content">
-    <p>
-      <mat-toolbar>
+      <mat-toolbar class="max-width">
         <button type="button" mat-button (click)="drawer.toggle()">
           <mat-icon class="menu-icon">menu</mat-icon>
         </button>
         <span>Simple CRM</span>
       </mat-toolbar>
-    </p>
   </nav>
+  <main class="max-width">
+    <router-outlet/>
+  </main>
 </mat-drawer-container>
 
-<router-outlet />
+
