@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 .dialog-content {
     border: 1px solid #29dbdb;
     border-radius: 30px;
@@ -6,4 +8,14 @@
 mat-dialog-content {
     display: flex;
     gap: 16px;
+}
+
+.progress-bar-container {
+  mat-progress-bar {
+
+    @include mat.progress-bar-overrides((
+      active-indicator-color: #29dbdb,
+      track-color: transparent,
+    ));
+  }
 }

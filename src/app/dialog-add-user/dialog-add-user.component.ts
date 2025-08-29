@@ -1,19 +1,21 @@
 import { Component, inject } from '@angular/core';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {
   MatDialog,
   MatDialogActions,
-  MatDialogClose,
   MatDialogContent,
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule, MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { User } from '../../models/user.class';
 import { Firestore, addDoc, collection } from '@angular/fire/firestore';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-dialog-add-user',
   imports: [
@@ -24,8 +26,9 @@ import { Firestore, addDoc, collection } from '@angular/fire/firestore';
     MatDialogTitle,
     MatDialogContent,
     MatDialogActions,
-    MatDialogClose,
     MatDatepickerModule,
+    MatProgressBarModule,
+    CommonModule
   ],
   templateUrl: './dialog-add-user.component.html',
   styleUrl: './dialog-add-user.component.scss',
@@ -34,6 +37,7 @@ import { Firestore, addDoc, collection } from '@angular/fire/firestore';
 export class DialogAddUserComponent {
   private firestore = inject(Firestore);
   user: User = new User;
+  loading = false;
 
   constructor(public dialogService: MatDialog) { }
 
@@ -42,6 +46,7 @@ export class DialogAddUserComponent {
   }
 
   saveUser(): void {
+    this.loading = true;
     if (this.user.birthDate instanceof Date) {
       this.user.birthDate = this.user.birthDate.getTime();
     }
@@ -49,6 +54,7 @@ export class DialogAddUserComponent {
     addDoc(usersCollection, this.user.toJSON()).then((result: any) => {
       console.log(result);
       this.user = new User();
+      this.loading = false;
     });
   }
 }
