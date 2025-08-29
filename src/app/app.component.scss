@@ -26,7 +26,9 @@
 }
 
 .sidenav {
-  width: 300px;
+  width: 30%;
+  min-width: 200px;
+  max-width: 300px;
   background-color: #282f2f;
   border-right: 1px solid #29dbdb;
 }
@@ -35,12 +37,24 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgba(238, 238, 238, 0.12);
-  height: 56px;
+  height: 150px;
   padding: 16px;
+
+  .logo-img {
+    width: 120px;
+    height: auto;
+    border-radius: 50% 0 50%  0 ;
+  }
 }
 
 main {
   height: calc(100dvh - 56px);
   width: 100%;
-  padding: 32px 56px;
+  padding-block: clamp(16px, 2vw + 1rem, 32px); /* oben + unten */
+  padding-inline: clamp(16px, 4vw + 1rem, 56px); /* links + rechts */
+}
+
+.sidebar-btn {
+  background-color: transparent;
+  border: none;
 }

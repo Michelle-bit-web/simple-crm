@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    MatToolbarModule, 
+    MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
     CommonModule,
@@ -20,4 +20,11 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   title = 'simple-crm';
+  pageLoaded = false;
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.pageLoaded = true;
+    }, 1500);
+  }
 }

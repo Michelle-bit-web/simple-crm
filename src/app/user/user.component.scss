@@ -3,3 +3,35 @@
  bottom: 56px;
  right: 56px;
 }
+
+.user-table {
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+  border-collapse: collapse;
+
+  th {
+    text-align: start;
+    background-color: #282f2f;
+    padding: 0 8px;
+  }
+
+  td {
+    padding: 0 8px;
+  }
+
+  tr {
+    border-bottom: 1px solid #5c6a69;
+    cursor: pointer;
+    &:last-child {
+      border-bottom: unset;
+    }
+    &:first-child {
+      cursor: unset;
+    }
+    &:hover {
+      background-color: #282f2f;
+      border-bottom: #29dbdb 1px solid;
+    }
+  }
+}

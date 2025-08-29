@@ -19,3 +19,24 @@ mat-dialog-content {
     ));
   }
 }
+
+.btn {
+  width: 80px;
+  height: 40px;
+  border-radius: 10px;
+  background: #004f4f;
+  border: 1px solid #889392;
+
+  &:hover {
+    background-color: #006e6e;
+    border: 1px solid #29dbdb;
+  }
+}
+
+.cancel-btn {
+  background-color: #3f4948;
+  &:hover {
+    background-color: #5c6a69;
+    border: 1px solid white;
+  }
+}

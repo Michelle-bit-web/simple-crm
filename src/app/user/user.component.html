@@ -1,8 +1,25 @@
 <section>
   <h1>user works!</h1>
-
+<mat-card>
+  <table class="user-table">
+   <tr>
+     <th>Name</th>
+     <th>Email</th>
+     <th>Birthdate</th>
+     <th>City</th>
+   </tr>
+   @for(user of userList; track $index) {
+    <tr>
+      <td>{{user.firstName}} {{user.lastName}}</td>
+      <td>eMail</td>
+      <td>{{getDateFormat(user.birthDate)}}</td>
+      <td>{{user.city}}</td>
+    </tr>
+   }
+  </table>
+</mat-card>
 <div class="add-person-container">
-  <button 
+  <button
   mat-fab
   matTooltip="Add new user"
   [matTooltipPosition]="position"

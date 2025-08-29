@@ -1,11 +1,12 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
-  <mat-drawer 
-  #drawer 
-  class="sidenav" 
-  mode="side" 
+  <mat-drawer
+  #drawer
+  class="sidenav"
+  mode="side"
   [opened]="true">
    <div class="logo-container">
-    PLATZ LOGO
+     <img class="logo-img" src="/assets/images/scrm.gif" alt="Simple CRM Logo" *ngIf="!pageLoaded">
+     <img class="logo-img" src="/assets/images/scrm.png" alt="Simple CRM Logo" *ngIf="pageLoaded">
    </div>
    <ul>
     <li routerLink="/dashboard"><mat-icon>dashboard</mat-icon>Dashboard</li>
@@ -16,7 +17,7 @@
 
   <nav class="sidenav-content">
       <mat-toolbar class="max-width">
-        <button type="button" mat-button (click)="drawer.toggle()">
+        <button class="sidebar-btn" type="button" (click)="drawer.toggle()">
           <mat-icon class="menu-icon">menu</mat-icon>
         </button>
         <span>Simple CRM</span>

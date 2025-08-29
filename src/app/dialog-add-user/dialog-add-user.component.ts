@@ -12,9 +12,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { User } from '../../models/user.class';
-import { Firestore, addDoc, collection } from '@angular/fire/firestore';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CommonModule } from '@angular/common';
+import { UserDataService } from '../../services/user-data.service';
+
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -35,11 +36,11 @@ import { CommonModule } from '@angular/common';
   providers: [provideNativeDateAdapter()],
 })
 export class DialogAddUserComponent {
-  private firestore = inject(Firestore);
   user: User = new User;
   loading = false;
 
-  constructor(public dialogService: MatDialog) { }
+  constructor(public dialogService: MatDialog, private userDataService: UserDataService) { }
+
 
   onCancel(): void {
     this.dialogService.closeAll();
@@ -50,8 +51,7 @@ export class DialogAddUserComponent {
     if (this.user.birthDate instanceof Date) {
       this.user.birthDate = this.user.birthDate.getTime();
     }
-    const usersCollection = collection(this.firestore, 'users');
-    addDoc(usersCollection, this.user.toJSON()).then((result: any) => {
+    this.userDataService.addUser(this.user).then((result: any) => {
       console.log(result);
       this.user = new User();
       this.loading = false;
