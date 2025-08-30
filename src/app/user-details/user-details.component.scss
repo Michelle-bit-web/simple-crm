@@ -1,0 +1,42 @@
+header {
+  min-height: 250px;
+  background-color: rgb(253, 101, 0);
+  border-radius: 20px;
+  padding: 16px 24px;
+  position: relative;
+}
+
+.profile-img-container {
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: auto;
+  width: fit-content;
+  border-radius: 50%;
+  border: 5px solid rgb(253, 101, 0);
+
+  svg {
+    height: 80px;
+    width: 80px;
+    background-color: #101414;
+    border-radius: 50%;
+    path {
+      fill: rgb(253, 101, 0);
+    }
+  }
+}
+
+main {
+  margin-top: 40px;
+  padding: 16px 24px;
+
+  .tab-label {
+    padding: 16px 24px;
+    border-radius: 20px;
+
+    p {
+      padding: 16px 24px;
+    }
+  }
+}
