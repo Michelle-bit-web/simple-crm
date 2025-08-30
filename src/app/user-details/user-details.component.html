@@ -5,8 +5,10 @@
       <h2 *ngIf="user$ | async as user">{{ user.firstName }}  {{ user.lastName }}</h2>
       <p *ngIf="user$ | async as user">{{ user.email }}</p>
       <p *ngIf="user$ | async as user">{{ userService.getDateFormat(user.birthDate) }}</p>
-
     </div>
+    <button (click)="openDialog()" class="edit-btn" matIconButton aria-label="Button with a vertical three dot icon for editing user data">
+      <mat-icon>more_vert</mat-icon>
+    </button>
     <div class="profile-img-container flex-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {
@@ -6,6 +6,7 @@ import {
   MatDialogActions,
   MatDialogContent,
   MatDialogTitle,
+  MAT_DIALOG_DATA
 } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -39,12 +40,27 @@ import { UserDataService } from '../../services/user-data.service';
 export class DialogAddUserComponent {
   user: User = new User;
   loading = false;
+  isEditing = false;
 
-  constructor(public dialogService: MatDialog, private userDataService: UserDataService) { }
+  constructor(
+    public dialogService: MatDialog,
+    private userDataService: UserDataService,
+    @Inject(MAT_DIALOG_DATA) public data: User
+  ) { }
 
 
   onCancel(): void {
     this.dialogService.closeAll();
+  }
+
+  ngOnInit() {
+    if (this.data) {
+      this.isEditing = true;
+      this.user = new User({ ...this.data });
+      if (this.data.birthDate) {
+        this.user.birthDate = new Date(this.data.birthDate);
+      }
+    }
   }
 
   saveUser(): void {
@@ -56,5 +72,13 @@ export class DialogAddUserComponent {
       this.user = new User();
       this.loading = false;
     });
+  }
+
+  updateUser(userId: string) {
+    console.log('Update user:', this.user);
+  }
+
+  deleteUser(userId: string) {
+    console.log('Delete user:', this.user);
   }
 }

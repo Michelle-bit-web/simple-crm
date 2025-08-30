@@ -2,7 +2,7 @@
   <div class="progress-bar-container" *ngIf="loading">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
-    <h2 mat-dialog-title>Add user</h2>
+    <h2 mat-dialog-title>{{isEditing ? 'Edit user' : 'Add user'}}</h2>
     <mat-dialog-content>
         <mat-form-field appearance="outline">
         <mat-label>First Name</mat-label>
@@ -56,7 +56,9 @@
     </mat-dialog-content>
     <mat-hint class="required-hint">* required fields</mat-hint>
     <mat-dialog-actions>
-        <button class="cancel-btn btn" (click)="onCancel()" [disabled]="loading">Cancel</button>
-        <button class="save-btn btn" (click)="saveUser()" [disabled]="loading">Save</button>
+        <button *ngIf="!isEditing" class="cancel-btn btn" (click)="onCancel()" [disabled]="loading">Cancel</button>
+        <button *ngIf="!isEditing" class="save-btn btn" (click)="saveUser()" [disabled]="loading">Save</button>
+        <button *ngIf="isEditing" class="delete-btn btn" (click)="deleteUser('id hier rein')" [disabled]="loading">Delete</button>
+        <button *ngIf="isEditing" class="update-btn btn" (click)="updateUser('id hier rein')" [disabled]="loading">Update</button>
     </mat-dialog-actions>
 </div>

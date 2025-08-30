@@ -1,9 +1,28 @@
+@use '@angular/material' as mat;
+
 header {
   min-height: 250px;
   background-color: rgb(253, 101, 0);
   border-radius: 20px;
   padding: 16px 24px;
   position: relative;
+}
+
+.edit-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: white;
+  border: unset;
+  border-radius: 50%;
+  background-color:  transparent;
+  scale: 1.0;
+  transition: scale, color, 0.2s ease-in-out;
+
+  &:hover {
+    scale: 1.4;
+    color: #101414;
+  }
 }
 
 .profile-img-container {
