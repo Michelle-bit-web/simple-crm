@@ -17,7 +17,14 @@
         </mat-form-field>
     </mat-dialog-content>
     <mat-dialog-content>
-        <mat-form-field class=" full-width">
+        <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="..." [(ngModel)]="user.email" required [disabled]="loading"/>
+        <!-- <mat-hint>Please enter your last name.</mat-hint> -->
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-content>
+        <mat-form-field class="full-width">
             <mat-label>Birth Date</mat-label>
             <input matInput [matDatepicker]="picker" [(ngModel)]="user.birthDate" [disabled]="loading">
             <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
@@ -47,6 +54,7 @@
         <!-- <mat-hint>Please enter your city.</mat-hint> -->
         </mat-form-field>
     </mat-dialog-content>
+    <mat-hint class="required-hint">* required fields</mat-hint>
     <mat-dialog-actions>
         <button class="cancel-btn btn" (click)="onCancel()" [disabled]="loading">Cancel</button>
         <button class="save-btn btn" (click)="saveUser()" [disabled]="loading">Save</button>

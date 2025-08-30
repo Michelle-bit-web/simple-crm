@@ -9,9 +9,9 @@
      <th>City</th>
    </tr>
    @for(user of userList; track $index) {
-    <tr>
+    <tr [routerLink]="['/user/', user.id]">
       <td>{{user.firstName}} {{user.lastName}}</td>
-      <td>eMail</td>
+      <td>{{user.email}}</td>
       <td>{{getDateFormat(user.birthDate)}}</td>
       <td>{{user.city}}</td>
     </tr>

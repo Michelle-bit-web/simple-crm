@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { Subscription } from 'rxjs';
 import { UserDataService } from '../../services/user-data.service';
 import { User } from '../../models/user.class';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -16,7 +17,8 @@ import { User } from '../../models/user.class';
     MatButtonModule,
     MatTooltipModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    RouterLink
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'

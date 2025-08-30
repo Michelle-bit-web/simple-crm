@@ -52,7 +52,6 @@ export class DialogAddUserComponent {
       this.user.birthDate = this.user.birthDate.getTime();
     }
     this.userDataService.addUser(this.user).then((result: any) => {
-      console.log(result);
       this.user = new User();
       this.loading = false;
     });
