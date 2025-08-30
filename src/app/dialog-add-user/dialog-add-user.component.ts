@@ -16,6 +16,7 @@ import { User } from '../../models/user.class';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CommonModule } from '@angular/common';
 import { UserDataService } from '../../services/user-data.service';
+import { Router, RouterModule } from '@angular/router';
 
 
 @Component({
@@ -30,7 +31,8 @@ import { UserDataService } from '../../services/user-data.service';
     MatDialogActions,
     MatDatepickerModule,
     MatProgressBarModule,
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   templateUrl: './dialog-add-user.component.html',
   styleUrl: './dialog-add-user.component.scss',
@@ -45,7 +47,8 @@ export class DialogAddUserComponent {
   constructor(
     public dialogService: MatDialog,
     private userDataService: UserDataService,
-    @Inject(MAT_DIALOG_DATA) public data: User
+    @Inject(MAT_DIALOG_DATA) public data: User,
+    private router: Router
   ) { }
 
 
@@ -71,14 +74,31 @@ export class DialogAddUserComponent {
     this.userDataService.addUser(this.user).then((result: any) => {
       this.user = new User();
       this.loading = false;
+      this.onCancel();
     });
   }
 
-  updateUser(userId: string) {
-    console.log('Update user:', this.user);
+  updateUser() {
+    if (this.user.id) {
+      this.loading = true;
+      if (this.user.birthDate instanceof Date) {
+        this.user.birthDate = this.user.birthDate.getTime();
+      }
+      this.userDataService.updateUser(this.user.id, this.user).then(() => {
+        this.loading = false;
+        this.onCancel();
+      });
+    }
   }
 
-  deleteUser(userId: string) {
-    console.log('Delete user:', this.user);
+  deleteUser() {
+    if (this.user.id) {
+      this.loading = true;
+      this.userDataService.deleteUser(this.user.id).then(() => {
+        this.loading = false;
+        this.onCancel();
+        this.router.navigate(['/user']);
+      });
+    }
   }
 }

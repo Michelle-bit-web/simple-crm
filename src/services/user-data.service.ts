@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, doc, docData } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, doc, docData, updateDoc, deleteDoc } from '@angular/fire/firestore';
 import { User } from '../models/user.class';
 import { Observable, map } from 'rxjs';
 
@@ -38,6 +38,16 @@ export class UserDataService {
         else return User.JsonToUser(data);
       })
     );
+  }
+
+  updateUser(userId: string, user: User) {
+    const userToUpdate = this.getSingleUserRef(userId);
+    return updateDoc(userToUpdate, { ...user.toJSON() });
+  }
+
+  deleteUser(userId: string) {
+    const userToDelete = this.getSingleUserRef(userId);
+    return deleteDoc(userToDelete);
   }
 
   getDateFormat(date: number | Date): string {

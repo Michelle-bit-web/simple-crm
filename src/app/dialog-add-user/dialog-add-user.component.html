@@ -58,7 +58,7 @@
     <mat-dialog-actions>
         <button *ngIf="!isEditing" class="cancel-btn btn" (click)="onCancel()" [disabled]="loading">Cancel</button>
         <button *ngIf="!isEditing" class="save-btn btn" (click)="saveUser()" [disabled]="loading">Save</button>
-        <button *ngIf="isEditing" class="delete-btn btn" (click)="deleteUser('id hier rein')" [disabled]="loading">Delete</button>
-        <button *ngIf="isEditing" class="update-btn btn" (click)="updateUser('id hier rein')" [disabled]="loading">Update</button>
+        <button *ngIf="isEditing" class="delete-btn btn" (click)="deleteUser()" [disabled]="loading">Delete</button>
+        <button *ngIf="isEditing" class="update-btn btn" (click)="updateUser()" [disabled]="loading">Update</button>
     </mat-dialog-actions>
 </div>
