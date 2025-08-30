@@ -46,11 +46,6 @@ export class UserComponent {
   }
 
   getDateFormat(date: number | Date): string {
-    const dateFormat: Intl.DateTimeFormatOptions = {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit'
-    };
-    return new Date(date).toLocaleDateString('de-DE', dateFormat);
+    return this.userDataService.getDateFormat(date);
   }
 }

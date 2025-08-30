@@ -2,8 +2,10 @@
 <mat-card>
   <header>
     <div>
-      <h2>Max Mustermann</h2>
-      <p>max&#64;mustermann.com</p>
+      <h2 *ngIf="user$ | async as user">{{ user.firstName }}  {{ user.lastName }}</h2>
+      <p *ngIf="user$ | async as user">{{ user.email }}</p>
+      <p *ngIf="user$ | async as user">{{ userService.getDateFormat(user.birthDate) }}</p>
+
     </div>
     <div class="profile-img-container flex-center">
       <svg
@@ -22,10 +24,10 @@
   <main>
     <mat-tab-group>
       <mat-tab label="Address" class="tab-label">
-        <p>Streename No. <br> zip town</p>
+        <p *ngIf="user$ | async as user">{{ user.street }} <br> {{ user.zip }} {{ user.city }}</p>
       </mat-tab>
       <mat-tab label="Contact" class="tab-label">
-        <p>max&#64;mustermann.com</p>
+        <p *ngIf="user$ | async as user">{{ user.email }}</p>
       </mat-tab>
     </mat-tab-group>
   </main>
