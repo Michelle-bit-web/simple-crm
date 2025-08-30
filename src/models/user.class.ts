@@ -33,4 +33,17 @@ export class User {
       city: this.city,
     };
   }
+
+  static JsonToUser(json: any): User {
+    const user = new User();
+    user.id = json.id;
+    user.firstName = json.firstName;
+    user.lastName = json.lastName;
+    user.email = json.email;
+    user.street = json.street;
+    user.zip = json.zip;
+    user.city = json.city;
+    user.birthDate = json.birthDate;
+    return user;
+  }
 }

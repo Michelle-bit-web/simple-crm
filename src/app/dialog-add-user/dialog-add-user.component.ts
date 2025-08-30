@@ -35,6 +35,7 @@ import { UserDataService } from '../../services/user-data.service';
   styleUrl: './dialog-add-user.component.scss',
   providers: [provideNativeDateAdapter()],
 })
+
 export class DialogAddUserComponent {
   user: User = new User;
   loading = false;

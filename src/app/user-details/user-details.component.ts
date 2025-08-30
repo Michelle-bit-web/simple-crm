@@ -19,12 +19,17 @@ import { CommonModule, AsyncPipe, NgIf } from '@angular/common';
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.scss'
 })
+
 export class UserDetailsComponent {
   user$!: Observable<User | undefined>;
 
   constructor(private route: ActivatedRoute, public userService: UserDataService) { }
 
   ngOnInit() {
+    this.loadUserData();
+  }
+
+  loadUserData() {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id) {

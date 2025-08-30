@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Firestore, addDoc, collection, collectionData, doc, docData } from '@angular/fire/firestore';
 import { User } from '../models/user.class';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +31,13 @@ export class UserDataService {
 
   getUserById(id: string): Observable<User | undefined> {
     const userRef = this.getSingleUserRef(id);
-    return docData(userRef, { idField: 'id' }) as Observable<User | undefined>;
+    const observable = docData(userRef, { idField: 'id' }) as Observable<User | undefined>;
+    return observable.pipe(
+      map(data => {
+        if(!data) return undefined;
+        else return User.JsonToUser(data);
+      })
+    );
   }
 
   getDateFormat(date: number | Date): string {

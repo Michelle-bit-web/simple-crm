@@ -23,6 +23,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
 })
+
 export class UserComponent {
   position: TooltipPosition = 'above';
   userList: User[] = [];
